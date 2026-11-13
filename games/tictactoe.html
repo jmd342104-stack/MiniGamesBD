@@ -5,7 +5,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#090d1b">
-<title>Tic Tac Toe - Mini Games BD</title>
+
+<meta name="description" content="Play Tic Tac Toe online for free at Mini Games BD. Challenge the computer in Easy or Hard Mode and test your strategy.">
+<meta name="keywords" content="Tic Tac Toe, online Tic Tac Toe, free Tic Tac Toe game, Tic Tac Toe vs computer, Mini Games BD">
+
+<title>Tic Tac Toe Online - Play Free | Mini Games BD</title>
 
 <style>
 :root {
@@ -30,10 +34,11 @@ body {
   color:var(--text);
   min-height:100vh;
   padding:20px;
+  line-height:1.6;
 }
 
 .container {
-  max-width:550px;
+  max-width:750px;
   margin:auto;
 }
 
@@ -211,16 +216,79 @@ header {
   min-height:22px;
 }
 
+.info-section {
+  background:var(--surface);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:14px;
+  padding:22px;
+  margin-top:25px;
+}
+
+.info-section h2 {
+  color:var(--cyan);
+  font-size:21px;
+  margin-bottom:12px;
+}
+
+.info-section h3 {
+  color:#c4b2ff;
+  font-size:16px;
+  margin:17px 0 7px;
+}
+
+.info-section p,
+.info-section li {
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.8;
+}
+
+.info-section ul,
+.info-section ol {
+  padding-left:22px;
+}
+
+.info-section li {
+  margin-bottom:5px;
+}
+
+.faq-item {
+  border-bottom:1px solid rgba(255,255,255,.08);
+  padding:13px 0;
+}
+
+.faq-item:last-child {
+  border-bottom:none;
+}
+
+.faq-item h3 {
+  margin:0 0 6px;
+}
+
 footer {
   text-align:center;
   color:var(--muted);
-  margin-top:45px;
+  margin-top:35px;
+  padding-bottom:15px;
   font-size:12px;
 }
 
-@keyframes appear {
-  from {opacity:0; transform:scale(.8);}
-  to {opacity:1; transform:scale(1);}
+.footer-links {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:15px;
+  margin-top:12px;
+}
+
+.footer-links a {
+  color:var(--cyan);
+  text-decoration:none;
+  font-size:12px;
+}
+
+.footer-links a:hover {
+  text-decoration:underline;
 }
 
 @media(max-width:450px) {
@@ -228,6 +296,7 @@ footer {
   .heading h1 {font-size:29px;}
   .board {gap:9px;}
   .cell {border-radius:11px;}
+  .info-section {padding:17px;}
 }
 </style>
 </head>
@@ -273,15 +342,15 @@ footer {
 </div>
 
 <div class="board" id="board">
-  <button class="cell"></button>
-  <button class="cell"></button>
-  <button class="cell"></button>
-  <button class="cell"></button>
-  <button class="cell"></button>
-  <button class="cell"></button>
-  <button class="cell"></button>
-  <button class="cell"></button>
-  <button class="cell"></button>
+  <button class="cell" aria-label="Cell 1"></button>
+  <button class="cell" aria-label="Cell 2"></button>
+  <button class="cell" aria-label="Cell 3"></button>
+  <button class="cell" aria-label="Cell 4"></button>
+  <button class="cell" aria-label="Cell 5"></button>
+  <button class="cell" aria-label="Cell 6"></button>
+  <button class="cell" aria-label="Cell 7"></button>
+  <button class="cell" aria-label="Cell 8"></button>
+  <button class="cell" aria-label="Cell 9"></button>
 </div>
 
 <div class="controls">
@@ -293,8 +362,134 @@ footer {
   You are X. Computer is O.
 </div>
 
+<!-- ABOUT GAME -->
+<section class="info-section">
+  <h2>About Tic Tac Toe</h2>
+  <p>
+    Tic Tac Toe is a classic strategy game that is easy to learn
+    and fun to play. In this free online version, you play as X
+    against the computer, which plays as O.
+  </p>
+  <p>
+    Choose Easy Mode for a relaxed experience or Hard Mode to
+    challenge an intelligent computer opponent. Try to get three
+    matching symbols in a row and win the game!
+  </p>
+</section>
+
+<!-- HOW TO PLAY -->
+<section class="info-section">
+  <h2>How to Play Tic Tac Toe</h2>
+  <ol>
+    <li>You play first as X.</li>
+    <li>Tap any empty square on the 3×3 game board.</li>
+    <li>The computer will make its move as O.</li>
+    <li>Take turns until someone gets three matching symbols in a row.</li>
+    <li>Choose Restart to play another round.</li>
+    <li>Use Reset Score to clear the scoreboard.</li>
+  </ol>
+</section>
+
+<!-- GAME RULES -->
+<section class="info-section">
+  <h2>Tic Tac Toe Rules</h2>
+  <ul>
+    <li>The game is played on a 3×3 grid.</li>
+    <li>You are X and the computer is O.</li>
+    <li>Players take turns placing their symbols in empty squares.</li>
+    <li>The first player to make a line of three matching symbols wins.</li>
+    <li>A winning line can be horizontal, vertical or diagonal.</li>
+    <li>If all nine squares are filled and nobody wins, the game is a draw.</li>
+    <li>You cannot place a symbol in an already occupied square.</li>
+  </ul>
+</section>
+
+<!-- TIPS -->
+<section class="info-section">
+  <h2>Tic Tac Toe Tips and Tricks</h2>
+
+  <h3>1. Take the Center</h3>
+  <p>
+    The center square is useful because it can be part of several
+    possible winning lines.
+  </p>
+
+  <h3>2. Watch Your Opponent</h3>
+  <p>
+    Always check whether the computer is about to complete a line.
+    Block its winning move when necessary.
+  </p>
+
+  <h3>3. Create Winning Opportunities</h3>
+  <p>
+    Try to create two possible winning lines at the same time.
+    This can make it harder for your opponent to stop you.
+  </p>
+
+  <h3>4. Practice Hard Mode</h3>
+  <p>
+    Hard Mode uses a strategy-based computer opponent. Practice
+    against it to improve your decision-making skills.
+  </p>
+</section>
+
+<!-- FAQ -->
+<section class="info-section">
+  <h2>Frequently Asked Questions</h2>
+
+  <div class="faq-item">
+    <h3>Is Tic Tac Toe free to play?</h3>
+    <p>Yes! You can play this Tic Tac Toe game online for free.</p>
+  </div>
+
+  <div class="faq-item">
+    <h3>Can I play against the computer?</h3>
+    <p>Yes. You play as X and the computer plays as O.</p>
+  </div>
+
+  <div class="faq-item">
+    <h3>What is the difference between Easy and Hard Mode?</h3>
+    <p>
+      Easy Mode makes random moves. Hard Mode uses the Minimax
+      strategy to choose its moves.
+    </p>
+  </div>
+
+  <div class="faq-item">
+    <h3>How do I win the game?</h3>
+    <p>
+      Make a line of three X symbols horizontally, vertically
+      or diagonally before the computer does.
+    </p>
+  </div>
+
+  <div class="faq-item">
+    <h3>Can a game end in a draw?</h3>
+    <p>
+      Yes. If all nine squares are filled and neither player
+      has three symbols in a row, the game ends in a draw.
+    </p>
+  </div>
+
+  <div class="faq-item">
+    <h3>Does the game work on mobile phones?</h3>
+    <p>
+      Yes. The game is designed to work on mobile phones,
+      tablets and desktop devices.
+    </p>
+  </div>
+</section>
+
 <footer>
   © <span id="year"></span> Mini Games BD. All Rights Reserved.
+
+  <div class="footer-links">
+    <a href="../index.html">Home</a>
+    <a href="../about.html">About</a>
+    <a href="../contact.html">Contact</a>
+    <a href="../privacy.html">Privacy Policy</a>
+    <a href="../terms.html">Terms</a>
+  </div>
 </footer>
 
 </div>
@@ -310,6 +505,7 @@ let mode = "easy";
 let playerScore = 0;
 let computerScore = 0;
 let drawScore = 0;
+let turnToken = 0;
 
 const winPatterns = [
   [0,1,2],
@@ -379,7 +575,13 @@ function playerMove(index) {
 
   statusEl.textContent = "Computer Thinking...";
 
-  setTimeout(computerMove,350);
+  const currentToken = turnToken;
+
+  setTimeout(() => {
+    if (currentToken === turnToken) {
+      computerMove();
+    }
+  },350);
 }
 
 function computerMove() {
@@ -521,6 +723,7 @@ function finishGame(result) {
 
 function restartGame() {
 
+  turnToken++;
   board = Array(9).fill("");
   gameOver = false;
 
