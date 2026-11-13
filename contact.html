@@ -1,0 +1,304 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b1020">
+<meta name="description" content="Contact Mini Games BD for questions, feedback, suggestions and support.">
+<title>Contact Us - Mini Games BD</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:Arial,sans-serif;
+  background:#0b1020;
+  color:#f4f6ff;
+  line-height:1.7;
+}
+
+header{
+  background:#121a2e;
+  border-bottom:1px solid #293653;
+  padding:18px 6%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.logo{
+  color:#55e6bd;
+  font-size:23px;
+  font-weight:bold;
+  text-decoration:none;
+}
+
+nav{
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+}
+
+nav a{
+  color:#b7c3d9;
+  text-decoration:none;
+  font-size:14px;
+}
+
+nav a:hover{color:#55e6bd}
+
+.container{
+  max-width:850px;
+  margin:45px auto;
+  padding:0 18px;
+}
+
+.hero{
+  text-align:center;
+  padding:35px 15px;
+  background:linear-gradient(135deg,#182844,#242044);
+  border:1px solid #344565;
+  border-radius:20px;
+  margin-bottom:25px;
+}
+
+.hero h1{
+  font-size:34px;
+  margin-bottom:8px;
+}
+
+.hero p{color:#b7c3d9}
+
+.card{
+  background:#151e34;
+  border:1px solid #293653;
+  border-radius:16px;
+  padding:25px;
+  margin-bottom:18px;
+}
+
+.card h2{
+  color:#55e6bd;
+  font-size:21px;
+  margin-bottom:12px;
+}
+
+.card p{
+  color:#b7c3d9;
+  font-size:14px;
+  margin-bottom:10px;
+}
+
+label{
+  display:block;
+  margin:14px 0 6px;
+  color:#dce5f7;
+  font-size:14px;
+}
+
+input,textarea{
+  width:100%;
+  padding:13px;
+  background:#0d1528;
+  border:1px solid #344565;
+  border-radius:9px;
+  color:#fff;
+  font-size:15px;
+  font-family:Arial,sans-serif;
+  outline:none;
+}
+
+input:focus,textarea:focus{
+  border-color:#55e6bd;
+}
+
+textarea{
+  min-height:130px;
+  resize:vertical;
+}
+
+button{
+  width:100%;
+  margin-top:18px;
+  padding:14px;
+  background:linear-gradient(120deg,#55e6bd,#50c9f2);
+  border:0;
+  border-radius:10px;
+  color:#081322;
+  font-size:15px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+button:active{transform:scale(.98)}
+
+.notice{
+  color:#8e9db8;
+  font-size:12px;
+  margin-top:12px;
+}
+
+footer{
+  text-align:center;
+  padding:25px 15px;
+  border-top:1px solid #293653;
+  color:#8493ad;
+  font-size:13px;
+}
+
+footer a{
+  color:#55e6bd;
+  text-decoration:none;
+  margin:0 7px;
+}
+
+@media(max-width:500px){
+  header{padding:15px 5%}
+  .hero h1{font-size:28px}
+  .card{padding:19px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="index.html" class="logo">🎮 Mini Games BD</a>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="index.html#games">Games</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main class="container">
+
+  <section class="hero">
+    <h1>Contact Us</h1>
+    <p>We would love to hear from you!</p>
+  </section>
+
+  <section class="card">
+    <h2>Get In Touch</h2>
+
+    <p>
+      Have a question, suggestion, feedback or problem
+      while playing our games? Send us a message.
+    </p>
+
+    <form id="contactForm">
+
+      <label for="name">Your Name</label>
+      <input
+        type="text"
+        id="name"
+        placeholder="Enter your name"
+        required
+      >
+
+      <label for="email">Your Email</label>
+      <input
+        type="email"
+        id="email"
+        placeholder="Enter your email"
+        required
+      >
+
+      <label for="subject">Subject</label>
+      <input
+        type="text"
+        id="subject"
+        placeholder="Enter message subject"
+        required
+      >
+
+      <label for="message">Your Message</label>
+      <textarea
+        id="message"
+        placeholder="Write your message here..."
+        required
+      ></textarea>
+
+      <button type="submit">Send Message ✉️</button>
+
+      <p class="notice">
+        Your email app will open to send the message.
+      </p>
+
+    </form>
+  </section>
+
+  <section class="card">
+    <h2>What Can You Contact Us About?</h2>
+
+    <p>• Game-related problems</p>
+    <p>• Suggestions for new games</p>
+    <p>• Website feedback</p>
+    <p>• Technical issues</p>
+    <p>• General questions</p>
+  </section>
+
+  <section class="card">
+    <h2>Thank You!</h2>
+    <p>
+      Thank you for visiting Mini Games BD.
+      Your feedback helps us improve our website
+      and gaming experience.
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  <p>© <span id="year"></span> Mini Games BD. All rights reserved.</p>
+
+  <p style="margin-top:10px">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms</a>
+  </p>
+</footer>
+
+<script>
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+
+document.getElementById("contactForm").addEventListener("submit",function(e){
+
+  e.preventDefault();
+
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const subject = document.getElementById("subject").value.trim();
+  const message = document.getElementById("message").value.trim();
+
+  if(!name || !email || !subject || !message){
+    alert("Please fill in all fields.");
+    return;
+  }
+
+  const yourEmail = "saidurselmi@gmail.com";
+
+  const body =
+    "Name: "+name+
+    "\nEmail: "+email+
+    "\n\nMessage:\n"+message;
+
+  const mailto =
+    "mailto:"+yourEmail+
+    "?subject="+encodeURIComponent(subject)+
+    "&body="+encodeURIComponent(body);
+
+  window.location.href = mailto;
+
+});
+</script>
+
+</body>
+</html>

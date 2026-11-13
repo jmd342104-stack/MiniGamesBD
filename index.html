@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Play free online mini games at Mini Games BD. Enjoy puzzles, arcade games and fun challenges.">
+  <meta name="theme-color" content="#090d1b">
+  <title>Mini Games BD - Play Free Online Games</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container nav">
+
+      <a href="index.html" class="logo">
+        <span class="logo-icon">🎮</span>
+        Mini Games <span>BD</span>
+      </a>
+
+      <button class="menu-btn" id="menuBtn">☰</button>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#games">Games</a>
+        <a href="#categories">Categories</a>
+        <a href="#about">About</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main>
+  <section class="hero" id="home">
+    <div class="container hero-content">
+
+      <div class="hero-text">
+        <span class="tag">🎯 PLAY • ENJOY • REPEAT</span>
+
+        <h1>
+          Welcome to
+          <span>Mini Games BD</span>
+        </h1>
+
+        <p>
+          Discover amazing free online games.
+          Challenge yourself, beat your high scores
+          and enjoy unlimited fun!
+        </p>
+
+        <a href="#games" class="primary-btn">
+          Explore Games <span>→</span>
+        </a>
+      </div>
+
+      <div class="hero-visual">
+        <div class="game-emoji">🎮</div>
+        <div class="floating one">🏆</div>
+        <div class="floating two">🎯</div>
+        <div class="floating three">🕹️</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="container stats-grid">
+
+      <div class="stat-card">
+        <h2>06+</h2>
+        <p>Free Games</p>
+      </div>
+
+      <div class="stat-card">
+        <h2>100%</h2>
+        <p>Free To Play</p>
+      </div>
+
+      <div class="stat-card">
+        <h2>24/7</h2>
+        <p>Gaming Fun</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- GAMES -->
+  <section class="games-section" id="games">
+    <div class="container">
+
+      <div class="section-heading">
+        <span class="tag">OUR COLLECTION</span>
+        <h2>Explore <span>Games</span></h2>
+        <p>Choose your favorite game and start playing!</p>
+      </div>
+
+      <div class="search-box">
+        <input
+          type="search"
+          id="gameSearch"
+          placeholder="🔍 Search your favorite game..."
+        >
+      </div>
+
+      <div class="category-list" id="categories">
+        <button class="category-btn active" data-category="all">All Games</button>
+        <button class="category-btn" data-category="puzzle">Puzzle</button>
+        <button class="category-btn" data-category="arcade">Arcade</button>
+        <button class="category-btn" data-category="classic">Classic</button>
+      </div>
+
+      <div class="games-grid" id="gamesGrid">
+
+        <article class="game-card" data-name="memory match" data-category="puzzle">
+          <div class="game-image memory-bg">
+            <span>🧠</span>
+            <span class="game-label">PUZZLE</span>
+          </div>
+          <div class="game-info">
+            <h3>Memory Match</h3>
+            <p>Test your memory and match the cards.</p>
+            <a href="games/memory.html" class="play-btn">Play Now →</a>
+          </div>
+        </article>
+
+        <article class="game-card" data-name="tic tac toe" data-category="classic">
+          <div class="game-image tic-bg">
+            <span>⭕</span>
+            <span class="game-label">CLASSIC</span>
+          </div>
+          <div class="game-info">
+            <h3>Tic Tac Toe</h3>
+            <p>Challenge your brain with X and O.</p>
+            <a href="games/tictactoe.html" class="play-btn">Play Now →</a>
+          </div>
+        </article>
+
+        <article class="game-card" data-name="snake game" data-category="arcade">
+          <div class="game-image snake-bg">
+            <span>🐍</span>
+            <span class="game-label">ARCADE</span>
+          </div>
+          <div class="game-info">
+            <h3>Snake Game</h3>
+            <p>Eat food and grow your snake.</p>
+            <a href="games/snake.html" class="play-btn">Play Now →</a>
+          </div>
+        </article>
+
+        <article class="game-card" data-name="2048 puzzle" data-category="puzzle">
+          <div class="game-image puzzle-bg">
+            <span>🔢</span>
+            <span class="game-label">PUZZLE</span>
+          </div>
+          <div class="game-info">
+            <h3>2048 Puzzle</h3>
+            <p>Combine numbers to reach 2048.</p>
+            <a href="games/2048.html" class="play-btn">Play Now →</a>
+          </div>
+        </article>
+
+        <article class="game-card" data-name="whack a mole" data-category="arcade">
+          <div class="game-image mole-bg">
+            <span>🔨</span>
+            <span class="game-label">ARCADE</span>
+          </div>
+          <div class="game-info">
+            <h3>Whack A Mole</h3>
+            <p>Hit the targets as fast as you can.</p>
+            <a href="games/whackamole.html" class="play-btn">Play Now →</a>
+          </div>
+        </article>
+
+        <article class="game-card" data-name="rock paper scissors" data-category="classic">
+          <div class="game-image rps-bg">
+            <span>✊</span>
+            <span class="game-label">CLASSIC</span>
+          </div>
+          <div class="game-info">
+            <h3>Rock Paper Scissors</h3>
+            <p>Can you beat the computer?</p>
+            <a href="games/rps.html" class="play-btn">Play Now →</a>
+          </div>
+        </article>
+
+      </div>
+
+      <p class="no-results" id="noResults" hidden>
+        No games found. Try another search!
+      </p>
+
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section" id="about">
+    <div class="container about-content">
+      <span class="tag">ABOUT US</span>
+      <h2>Gaming Made <span>Simple</span></h2>
+      <p>
+        Mini Games BD is a free online gaming platform
+        where everyone can enjoy fun and exciting
+        browser games. No complicated installation needed.
+        Just choose a game and play!
+      </p>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+
+      <a href="index.html" class="logo">
+        🎮 Mini Games <span>BD</span>
+      </a>
+
+      <p>Play More. Enjoy More. Have Fun!</p>
+
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#games">Games</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms</a>
+      </div>
+
+      <p class="copyright">
+        © <span id="year"></span> Mini Games BD. All Rights Reserved.
+      </p>
+
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

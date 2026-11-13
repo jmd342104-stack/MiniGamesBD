@@ -1,0 +1,237 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b1020">
+<meta name="description" content="Learn about Mini Games BD, a free online gaming platform where everyone can enjoy fun browser games.">
+<title>About Us - Mini Games BD</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:Arial,sans-serif;
+  background:#0b1020;
+  color:#f4f6ff;
+  line-height:1.7;
+}
+
+header{
+  background:#121a2e;
+  border-bottom:1px solid #293653;
+  padding:18px 6%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.logo{
+  color:#55e6bd;
+  font-size:23px;
+  font-weight:bold;
+  text-decoration:none;
+}
+
+nav{
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+}
+
+nav a{
+  color:#b7c3d9;
+  text-decoration:none;
+  font-size:14px;
+}
+
+nav a:hover{color:#55e6bd}
+
+.container{
+  max-width:850px;
+  margin:45px auto;
+  padding:0 18px;
+}
+
+.hero{
+  text-align:center;
+  padding:35px 15px;
+  background:linear-gradient(135deg,#182844,#242044);
+  border:1px solid #344565;
+  border-radius:20px;
+  margin-bottom:25px;
+}
+
+.hero h1{
+  font-size:36px;
+  margin-bottom:10px;
+}
+
+.hero p{color:#b7c3d9}
+
+.card{
+  background:#151e34;
+  border:1px solid #293653;
+  border-radius:16px;
+  padding:25px;
+  margin-bottom:18px;
+}
+
+.card h2{
+  color:#55e6bd;
+  font-size:21px;
+  margin-bottom:12px;
+}
+
+.card p{
+  color:#b7c3d9;
+  font-size:15px;
+  margin-bottom:10px;
+}
+
+.game-list{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-top:15px;
+}
+
+.game-item{
+  background:#0d1528;
+  border:1px solid #293653;
+  border-radius:10px;
+  padding:14px;
+  color:#e7edff;
+  font-size:14px;
+}
+
+footer{
+  text-align:center;
+  padding:25px 15px;
+  border-top:1px solid #293653;
+  color:#8493ad;
+  font-size:13px;
+}
+
+footer a{
+  color:#55e6bd;
+  text-decoration:none;
+  margin:0 7px;
+}
+
+@media(max-width:500px){
+  header{padding:15px 5%}
+  .hero h1{font-size:28px}
+  .game-list{grid-template-columns:1fr}
+  .card{padding:19px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="index.html" class="logo">🎮 Mini Games BD</a>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="index.html#games">Games</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main class="container">
+
+  <section class="hero">
+    <h1>About Mini Games BD</h1>
+    <p>Fun, entertainment and exciting games for everyone!</p>
+  </section>
+
+  <section class="card">
+    <h2>Who We Are</h2>
+    <p>
+      Welcome to Mini Games BD! We are an online gaming platform
+      created to provide simple, enjoyable and accessible browser
+      games for people of all ages.
+    </p>
+    <p>
+      Our goal is to make online gaming easy and entertaining.
+      Visitors can enjoy our games directly through their web
+      browsers without installing any applications.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>Our Mission</h2>
+    <p>
+      Our mission is to create a fun and user-friendly gaming
+      experience that works smoothly on mobile phones, tablets
+      and computers.
+    </p>
+    <p>
+      We want everyone to enjoy quick games, challenge themselves
+      and share fun moments with friends.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>Our Games</h2>
+    <p>
+      Mini Games BD offers different types of simple browser games.
+      Some of our available games include:
+    </p>
+
+    <div class="game-list">
+      <div class="game-item">🧠 Memory Match</div>
+      <div class="game-item">❌ Tic Tac Toe</div>
+      <div class="game-item">🐍 Snake Game</div>
+      <div class="game-item">🔢 2048 Game</div>
+      <div class="game-item">🐹 Whack-a-Mole</div>
+      <div class="game-item">✊ Rock Paper Scissors</div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Free Entertainment</h2>
+    <p>
+      Our games are available to play through your browser.
+      No game installation is required. We aim to keep the
+      website simple, accessible and easy to use.
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>Contact Us</h2>
+    <p>
+      Have a question, suggestion or feedback?
+      We would love to hear from you.
+    </p>
+    <p>
+      Visit our <a href="contact.html" style="color:#55e6bd">Contact Us page</a>
+      to get in touch.
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  <p>© <span id="year"></span> Mini Games BD. All rights reserved.</p>
+  <p style="margin-top:10px">
+    <a href="index.html">Home</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms</a>
+  </p>
+</footer>
+
+<script>
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+</script>
+
+</body>
+</html>
