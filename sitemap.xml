@@ -1,48 +1,15 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <url>
-    <loc>https://jmd342104-stack.github.io/MiniGamesBD/</loc>
-  </url>
-
-  <url>
-    <loc>https://jmd342104-stack.github.io/MiniGamesBD/about.html</loc>
-  </url>
-
-  <url>
-    <loc>https://jmd342104-stack.github.io/MiniGamesBD/contact.html</loc>
-  </url>
-
-  <url>
-    <loc>https://jmd342104-stack.github.io/MiniGamesBD/privacy.html</loc>
-  </url>
-
-  <url>
-    <loc>https://jmd342104-stack.github.io/MiniGamesBD/terms.html</loc>
-  </url>
-
-  <url>
-    <loc>https://jmd342104-stack.github.io/MiniGamesBD/games/memory.html</loc>
-  </url>
-
-  <url>
-    <loc>https://jmd342104-stack.github.io/MiniGamesBD/games/tictactoe.html</loc>
-  </url>
-
-  <url>
-    <loc>https://jmd342104-stack.github.io/MiniGamesBD/games/snake.html</loc>
-  </url>
-
-  <url>
-    <loc>https://jmd342104-stack.github.io/MiniGamesBD/games/2048.html</loc>
-  </url>
-
-  <url>
-    <loc>https://jmd342104-stack.github.io/MiniGamesBD/games/whackamole.html</loc>
-  </url>
-
-  <url>
-    <loc>https://jmd342104-stack.github.io/MiniGamesBD/games/rps.html</loc>
-  </url>
-
+  <url><loc>https://jmd342104-stack.github.io/MiniGamesBD/</loc></url>
+  <url><loc>https://jmd342104-stack.github.io/MiniGamesBD/about.html</loc></url>
+  <url><loc>https://jmd342104-stack.github.io/MiniGamesBD/contact.html</loc></url>
+  <url><loc>https://jmd342104-stack.github.io/MiniGamesBD/privacy.html</loc></url>
+  <url><loc>https://jmd342104-stack.github.io/MiniGamesBD/terms.html</loc></url>
+  <url><loc>https://jmd342104-stack.github.io/MiniGamesBD/games/memory.html</loc></url>
+  <url><loc>https://jmd342104-stack.github.io/MiniGamesBD/games/tictactoe.html</loc></url>
+  <url><loc>https://jmd342104-stack.github.io/MiniGamesBD/games/snake.html</loc></url>
+  <url><loc>https://jmd342104-stack.github.io/MiniGamesBD/games/2048.html</loc></url>
+  <url><loc>https://jmd342104-stack.github.io/MiniGamesBD/games/whackamole.html</loc></url>
+  <url><loc>https://jmd342104-stack.github.io/MiniGamesBD/games/rps.html</loc></url>
 </urlset>
