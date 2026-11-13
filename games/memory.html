@@ -1,0 +1,571 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090d1b">
+
+<title>Memory Match - Mini Games BD</title>
+
+<style>
+:root {
+  --bg:#090d1b;
+  --surface:#11182b;
+  --card:#19243c;
+  --purple:#8758ff;
+  --cyan:#36d9ef;
+  --text:#f5f7ff;
+  --muted:#9ba8c2;
+}
+
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body {
+  font-family:Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  padding:20px;
+}
+
+.container {
+  max-width:650px;
+  margin:auto;
+}
+
+header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:30px;
+  gap:10px;
+}
+
+.logo {
+  font-size:19px;
+  font-weight:bold;
+}
+
+.logo span {
+  color:var(--cyan);
+}
+
+.back {
+  color:white;
+  text-decoration:none;
+  background:var(--surface);
+  padding:10px 15px;
+  border-radius:9px;
+  font-size:13px;
+}
+
+.heading {
+  text-align:center;
+  margin-bottom:25px;
+}
+
+.heading h1 {
+  font-size:34px;
+  margin-bottom:8px;
+}
+
+.heading p {
+  color:var(--muted);
+  font-size:14px;
+}
+
+.stats {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-bottom:20px;
+}
+
+.stat {
+  background:var(--surface);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:12px;
+  padding:15px 5px;
+  text-align:center;
+}
+
+.stat h2 {
+  color:var(--cyan);
+  font-size:25px;
+}
+
+.stat p {
+  color:var(--muted);
+  font-size:12px;
+  margin-top:5px;
+}
+
+.progress {
+  height:7px;
+  background:var(--surface);
+  border-radius:20px;
+  overflow:hidden;
+  margin-bottom:20px;
+}
+
+.progress-bar {
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,var(--purple),var(--cyan));
+  transition:.3s;
+}
+
+.game-board {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  perspective:1000px;
+}
+
+.card {
+  height:115px;
+  cursor:pointer;
+  position:relative;
+  transform-style:preserve-3d;
+  transition:transform .5s;
+}
+
+.card.flipped {
+  transform:rotateY(180deg);
+}
+
+.card.matched {
+  pointer-events:none;
+}
+
+.card-face {
+  position:absolute;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  border-radius:13px;
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+}
+
+.card-front {
+  background:linear-gradient(145deg,#202d49,#151f35);
+  border:1px solid rgba(135,88,255,.35);
+  font-size:32px;
+  color:var(--cyan);
+  box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+.card-front::after {
+  content:"?";
+}
+
+.card-back {
+  background:linear-gradient(145deg,#32245f,#1c3454);
+  transform:rotateY(180deg);
+  font-size:43px;
+  border:1px solid var(--purple);
+}
+
+.card.matched .card-back {
+  background:linear-gradient(145deg,#125a48,#177c63);
+  border-color:#36d9a0;
+}
+
+.controls {
+  display:flex;
+  gap:12px;
+  margin-top:25px;
+}
+
+.btn {
+  flex:1;
+  border:none;
+  padding:14px;
+  border-radius:10px;
+  font-weight:bold;
+  font-size:14px;
+  cursor:pointer;
+  color:white;
+  background:var(--surface);
+}
+
+.btn.primary {
+  background:linear-gradient(110deg,var(--purple),#6846e8);
+}
+
+.btn:active {
+  transform:scale(.97);
+}
+
+.message {
+  text-align:center;
+  color:var(--cyan);
+  margin-top:20px;
+  min-height:25px;
+  font-size:14px;
+}
+
+.result {
+  display:none;
+  background:var(--surface);
+  border:1px solid var(--purple);
+  border-radius:16px;
+  padding:25px;
+  margin-top:20px;
+  text-align:center;
+  animation:appear .4s ease;
+}
+
+.result.show {
+  display:block;
+}
+
+.result h2 {
+  font-size:28px;
+  margin-bottom:10px;
+}
+
+.result p {
+  color:var(--muted);
+  margin:8px 0;
+}
+
+@keyframes appear {
+  from {
+    opacity:0;
+    transform:translateY(15px);
+  }
+  to {
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+footer {
+  text-align:center;
+  color:var(--muted);
+  margin-top:45px;
+  font-size:12px;
+}
+
+@media(max-width:450px) {
+  body {
+    padding:15px;
+  }
+
+  .card {
+    height:85px;
+  }
+
+  .card-back {
+    font-size:32px;
+  }
+
+  .heading h1 {
+    font-size:28px;
+  }
+
+  .game-board {
+    gap:8px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+  <a href="../index.html" class="back">← Home</a>
+  <div class="logo">🎮 Mini Games <span>BD</span></div>
+</header>
+
+<section class="heading">
+  <h1>🧠 Memory Match</h1>
+  <p>Find all matching pairs and test your memory!</p>
+</section>
+
+<section class="stats">
+
+  <div class="stat">
+    <h2 id="moves">0</h2>
+    <p>Moves</p>
+  </div>
+
+  <div class="stat">
+    <h2 id="timer">00:00</h2>
+    <p>Time</p>
+  </div>
+
+  <div class="stat">
+    <h2 id="best">--</h2>
+    <p>Best Score</p>
+  </div>
+
+</section>
+
+<div class="progress">
+  <div class="progress-bar" id="progress"></div>
+</div>
+
+<div class="game-board" id="gameBoard"></div>
+
+<div class="message" id="message">
+  Tap any card to start playing!
+</div>
+
+<div class="controls">
+  <button class="btn primary" id="restart">↻ Restart Game</button>
+  <button class="btn" id="home">⌂ Home</button>
+</div>
+
+<div class="result" id="result">
+  <h2>🎉 You Win!</h2>
+  <p id="resultMoves"></p>
+  <p id="resultTime"></p>
+  <p id="resultBest"></p>
+  <button class="btn primary" onclick="startGame()" style="margin-top:15px">
+    Play Again
+  </button>
+</div>
+
+<footer>
+  © <span id="year"></span> Mini Games BD. All Rights Reserved.
+</footer>
+
+</div>
+
+<script>
+const emojis = [
+  "🚀","🎮","🍕","⚽",
+  "🐱","🌟","🎧","🦋"
+];
+
+const board = document.getElementById("gameBoard");
+const movesEl = document.getElementById("moves");
+const timerEl = document.getElementById("timer");
+const bestEl = document.getElementById("best");
+const messageEl = document.getElementById("message");
+const progressEl = document.getElementById("progress");
+const resultEl = document.getElementById("result");
+
+let cards = [];
+let firstCard = null;
+let secondCard = null;
+let lockBoard = false;
+let moves = 0;
+let matches = 0;
+let seconds = 0;
+let timer = null;
+let started = false;
+
+let best = localStorage.getItem("memoryBest");
+
+bestEl.textContent = best || "--";
+
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+
+function shuffle(array) {
+  return array.sort(() => Math.random() - 0.5);
+}
+
+function startGame() {
+
+  clearInterval(timer);
+
+  moves = 0;
+  matches = 0;
+  seconds = 0;
+
+  firstCard = null;
+  secondCard = null;
+  lockBoard = false;
+  started = false;
+
+  movesEl.textContent = "0";
+  timerEl.textContent = "00:00";
+  progressEl.style.width = "0%";
+
+  messageEl.textContent =
+    "Tap any card to start playing!";
+
+  resultEl.classList.remove("show");
+
+  cards = shuffle([...emojis, ...emojis]);
+
+  board.innerHTML = "";
+
+  cards.forEach((emoji, index) => {
+
+    const card = document.createElement("div");
+
+    card.className = "card";
+    card.dataset.emoji = emoji;
+
+    card.innerHTML = `
+      <div class="card-face card-front"></div>
+      <div class="card-face card-back">${emoji}</div>
+    `;
+
+    card.addEventListener("click", () => flipCard(card));
+
+    board.appendChild(card);
+
+  });
+
+}
+
+function startTimer() {
+
+  if (started) return;
+
+  started = true;
+
+  timer = setInterval(() => {
+
+    seconds++;
+
+    let mins = Math.floor(seconds / 60);
+    let secs = seconds % 60;
+
+    timerEl.textContent =
+      String(mins).padStart(2,"0") + ":" +
+      String(secs).padStart(2,"0");
+
+  },1000);
+
+}
+
+function flipCard(card) {
+
+  if (
+    lockBoard ||
+    card === firstCard ||
+    card.classList.contains("matched") ||
+    card.classList.contains("flipped")
+  ) return;
+
+  startTimer();
+
+  card.classList.add("flipped");
+
+  if (!firstCard) {
+
+    firstCard = card;
+    return;
+
+  }
+
+  secondCard = card;
+  moves++;
+
+  movesEl.textContent = moves;
+
+  checkMatch();
+
+}
+
+function checkMatch() {
+
+  let isMatch =
+    firstCard.dataset.emoji === secondCard.dataset.emoji;
+
+  if (isMatch) {
+
+    firstCard.classList.add("matched");
+    secondCard.classList.add("matched");
+
+    matches++;
+
+    progressEl.style.width =
+      (matches / emojis.length * 100) + "%";
+
+    resetTurn();
+
+    if (matches === emojis.length) {
+      finishGame();
+    }
+
+  } else {
+
+    lockBoard = true;
+
+    messageEl.textContent = "Not a match! Try again.";
+
+    setTimeout(() => {
+
+      firstCard.classList.remove("flipped");
+      secondCard.classList.remove("flipped");
+
+      resetTurn();
+
+    },800);
+
+  }
+
+}
+
+function resetTurn() {
+
+  firstCard = null;
+  secondCard = null;
+  lockBoard = false;
+
+}
+
+function finishGame() {
+
+  clearInterval(timer);
+
+  messageEl.textContent =
+    "Amazing! You matched all the cards!";
+
+  let isNewBest = !best || moves < Number(best);
+
+  if (isNewBest) {
+
+    best = moves;
+
+    localStorage.setItem("memoryBest",best);
+
+    bestEl.textContent = best;
+
+  }
+
+  document.getElementById("resultMoves").textContent =
+    "Total Moves: " + moves;
+
+  document.getElementById("resultTime").textContent =
+    "Time: " + timerEl.textContent;
+
+  document.getElementById("resultBest").textContent =
+    isNewBest ? "🏆 New Best Score!" : "Best Score: " + best;
+
+  resultEl.classList.add("show");
+
+}
+
+document.getElementById("restart").addEventListener(
+  "click",startGame
+);
+
+document.getElementById("home").addEventListener(
+  "click",() => {
+    window.location.href = "../index.html";
+  }
+);
+
+startGame();
+</script>
+
+</body>
+</html>

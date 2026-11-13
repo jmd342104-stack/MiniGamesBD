@@ -1,0 +1,584 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090d1b">
+<title>Tic Tac Toe - Mini Games BD</title>
+
+<style>
+:root {
+  --bg:#090d1b;
+  --surface:#11182b;
+  --card:#19243c;
+  --purple:#8758ff;
+  --cyan:#36d9ef;
+  --text:#f5f7ff;
+  --muted:#9ba8c2;
+}
+
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body {
+  font-family:Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  padding:20px;
+}
+
+.container {
+  max-width:550px;
+  margin:auto;
+}
+
+header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:35px;
+}
+
+.logo {
+  font-size:19px;
+  font-weight:bold;
+}
+
+.logo span {
+  color:var(--cyan);
+}
+
+.back {
+  color:white;
+  text-decoration:none;
+  background:var(--surface);
+  padding:10px 15px;
+  border-radius:9px;
+  font-size:13px;
+}
+
+.heading {
+  text-align:center;
+  margin-bottom:25px;
+}
+
+.heading h1 {
+  font-size:34px;
+  margin-bottom:8px;
+}
+
+.heading p {
+  color:var(--muted);
+  font-size:14px;
+}
+
+.scoreboard {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-bottom:22px;
+}
+
+.score {
+  background:var(--surface);
+  border:1px solid rgba(255,255,255,.08);
+  padding:15px 5px;
+  border-radius:12px;
+  text-align:center;
+}
+
+.score h2 {
+  font-size:25px;
+  color:var(--cyan);
+}
+
+.score p {
+  color:var(--muted);
+  font-size:12px;
+  margin-top:5px;
+}
+
+.settings {
+  display:flex;
+  gap:10px;
+  margin-bottom:20px;
+}
+
+.settings button {
+  flex:1;
+  padding:12px 5px;
+  background:var(--surface);
+  border:1px solid rgba(255,255,255,.1);
+  color:var(--muted);
+  border-radius:9px;
+  cursor:pointer;
+}
+
+.settings button.active {
+  background:var(--purple);
+  color:white;
+  border-color:var(--purple);
+}
+
+.status {
+  text-align:center;
+  color:var(--cyan);
+  font-size:17px;
+  font-weight:bold;
+  margin-bottom:20px;
+  min-height:25px;
+}
+
+.board {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  max-width:390px;
+  margin:auto;
+}
+
+.cell {
+  aspect-ratio:1;
+  background:var(--card);
+  border:1px solid rgba(135,88,255,.25);
+  border-radius:15px;
+  color:white;
+  font-size:clamp(38px,12vw,65px);
+  font-weight:bold;
+  cursor:pointer;
+  transition:.25s;
+}
+
+.cell:hover:empty {
+  background:#253453;
+  border-color:var(--cyan);
+}
+
+.cell.x {
+  color:var(--cyan);
+}
+
+.cell.o {
+  color:#b18cff;
+}
+
+.cell.winner {
+  background:rgba(54,217,239,.18);
+  border:2px solid var(--cyan);
+  animation:pulse .7s infinite alternate;
+}
+
+@keyframes pulse {
+  from { transform:scale(1); }
+  to { transform:scale(1.04); }
+}
+
+.controls {
+  display:flex;
+  gap:12px;
+  margin-top:25px;
+}
+
+.btn {
+  flex:1;
+  padding:14px;
+  border:none;
+  border-radius:10px;
+  background:var(--surface);
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.btn.primary {
+  background:linear-gradient(110deg,var(--purple),#6846e8);
+}
+
+.btn:active {
+  transform:scale(.97);
+}
+
+.message {
+  text-align:center;
+  margin-top:20px;
+  color:var(--muted);
+  font-size:14px;
+  min-height:22px;
+}
+
+footer {
+  text-align:center;
+  color:var(--muted);
+  margin-top:45px;
+  font-size:12px;
+}
+
+@keyframes appear {
+  from {opacity:0; transform:scale(.8);}
+  to {opacity:1; transform:scale(1);}
+}
+
+@media(max-width:450px) {
+  body {padding:15px;}
+  .heading h1 {font-size:29px;}
+  .board {gap:9px;}
+  .cell {border-radius:11px;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+  <a href="../index.html" class="back">← Home</a>
+  <div class="logo">🎮 Mini Games <span>BD</span></div>
+</header>
+
+<section class="heading">
+  <h1>⭕ Tic Tac Toe</h1>
+  <p>Challenge the computer and become the champion!</p>
+</section>
+
+<section class="scoreboard">
+  <div class="score">
+    <h2 id="playerScore">0</h2>
+    <p>Player X</p>
+  </div>
+
+  <div class="score">
+    <h2 id="drawScore">0</h2>
+    <p>Draw</p>
+  </div>
+
+  <div class="score">
+    <h2 id="computerScore">0</h2>
+    <p>Computer O</p>
+  </div>
+</section>
+
+<div class="settings">
+  <button class="active" data-mode="easy">Easy Mode</button>
+  <button data-mode="hard">Hard Mode</button>
+</div>
+
+<div class="status" id="status">
+  Your Turn! (X)
+</div>
+
+<div class="board" id="board">
+  <button class="cell"></button>
+  <button class="cell"></button>
+  <button class="cell"></button>
+  <button class="cell"></button>
+  <button class="cell"></button>
+  <button class="cell"></button>
+  <button class="cell"></button>
+  <button class="cell"></button>
+  <button class="cell"></button>
+</div>
+
+<div class="controls">
+  <button class="btn primary" id="restart">↻ Restart</button>
+  <button class="btn" id="resetScore">Reset Score</button>
+</div>
+
+<div class="message" id="message">
+  You are X. Computer is O.
+</div>
+
+<footer>
+  © <span id="year"></span> Mini Games BD. All Rights Reserved.
+</footer>
+
+</div>
+
+<script>
+const cells = document.querySelectorAll(".cell");
+const statusEl = document.getElementById("status");
+const messageEl = document.getElementById("message");
+
+let board = Array(9).fill("");
+let gameOver = false;
+let mode = "easy";
+let playerScore = 0;
+let computerScore = 0;
+let drawScore = 0;
+
+const winPatterns = [
+  [0,1,2],
+  [3,4,5],
+  [6,7,8],
+  [0,3,6],
+  [1,4,7],
+  [2,5,8],
+  [0,4,8],
+  [2,4,6]
+];
+
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+
+function checkWinner(b) {
+  for (const pattern of winPatterns) {
+    const [a,b1,c] = pattern;
+
+    if (
+      b[a] &&
+      b[a] === b[b1] &&
+      b[a] === b[c]
+    ) {
+      return {
+        winner: b[a],
+        pattern
+      };
+    }
+  }
+
+  if (b.every(cell => cell !== "")) {
+    return {winner:"draw"};
+  }
+
+  return null;
+}
+
+function render() {
+  cells.forEach((cell,index) => {
+    cell.textContent = board[index];
+    cell.className = "cell";
+
+    if (board[index] === "X") {
+      cell.classList.add("x");
+    }
+
+    if (board[index] === "O") {
+      cell.classList.add("o");
+    }
+  });
+}
+
+function playerMove(index) {
+
+  if (gameOver || board[index] !== "") return;
+
+  board[index] = "X";
+  render();
+
+  const result = checkWinner(board);
+
+  if (result) {
+    finishGame(result);
+    return;
+  }
+
+  statusEl.textContent = "Computer Thinking...";
+
+  setTimeout(computerMove,350);
+}
+
+function computerMove() {
+
+  if (gameOver) return;
+
+  let move;
+
+  if (mode === "hard") {
+    move = bestMove();
+  } else {
+    move = easyMove();
+  }
+
+  if (move === undefined) return;
+
+  board[move] = "O";
+  render();
+
+  const result = checkWinner(board);
+
+  if (result) {
+    finishGame(result);
+  } else {
+    statusEl.textContent = "Your Turn! (X)";
+  }
+}
+
+function easyMove() {
+
+  const empty = board
+    .map((v,i) => v === "" ? i : null)
+    .filter(v => v !== null);
+
+  return empty[Math.floor(Math.random()*empty.length)];
+}
+
+function bestMove() {
+
+  let bestScore = -Infinity;
+  let move;
+
+  for (let i=0;i<9;i++) {
+
+    if (board[i] === "") {
+
+      board[i] = "O";
+
+      let score = minimax(board,0,false);
+
+      board[i] = "";
+
+      if (score > bestScore) {
+        bestScore = score;
+        move = i;
+      }
+    }
+  }
+
+  return move;
+}
+
+function minimax(b,depth,isMaximizing) {
+
+  const result = checkWinner(b);
+
+  if (result) {
+    if (result.winner === "O") return 10-depth;
+    if (result.winner === "X") return depth-10;
+    return 0;
+  }
+
+  if (isMaximizing) {
+
+    let best = -Infinity;
+
+    for (let i=0;i<9;i++) {
+      if (b[i] === "") {
+        b[i] = "O";
+        best = Math.max(best,minimax(b,depth+1,false));
+        b[i] = "";
+      }
+    }
+
+    return best;
+
+  } else {
+
+    let best = Infinity;
+
+    for (let i=0;i<9;i++) {
+      if (b[i] === "") {
+        b[i] = "X";
+        best = Math.min(best,minimax(b,depth+1,true));
+        b[i] = "";
+      }
+    }
+
+    return best;
+  }
+}
+
+function finishGame(result) {
+
+  gameOver = true;
+
+  if (result.winner === "X") {
+
+    playerScore++;
+    document.getElementById("playerScore").textContent = playerScore;
+
+    statusEl.textContent = "🎉 You Win!";
+    messageEl.textContent = "Amazing! You defeated the computer!";
+
+  } else if (result.winner === "O") {
+
+    computerScore++;
+    document.getElementById("computerScore").textContent = computerScore;
+
+    statusEl.textContent = "🤖 Computer Wins!";
+    messageEl.textContent = "Good try! Play another round.";
+
+  } else {
+
+    drawScore++;
+    document.getElementById("drawScore").textContent = drawScore;
+
+    statusEl.textContent = "🤝 It's a Draw!";
+    messageEl.textContent = "Both players are equally matched!";
+
+  }
+
+  if (result.pattern) {
+    result.pattern.forEach(index => {
+      cells[index].classList.add("winner");
+    });
+  }
+}
+
+function restartGame() {
+
+  board = Array(9).fill("");
+  gameOver = false;
+
+  statusEl.textContent = "Your Turn! (X)";
+  messageEl.textContent = "You are X. Computer is O.";
+
+  render();
+}
+
+cells.forEach((cell,index) => {
+  cell.addEventListener("click",() => {
+    playerMove(index);
+  });
+});
+
+document.getElementById("restart").addEventListener(
+  "click",restartGame
+);
+
+document.getElementById("resetScore").addEventListener(
+  "click",() => {
+
+    playerScore = 0;
+    computerScore = 0;
+    drawScore = 0;
+
+    document.getElementById("playerScore").textContent = 0;
+    document.getElementById("computerScore").textContent = 0;
+    document.getElementById("drawScore").textContent = 0;
+
+    restartGame();
+  }
+);
+
+document.querySelectorAll("[data-mode]").forEach(button => {
+
+  button.addEventListener("click",() => {
+
+    mode = button.dataset.mode;
+
+    document.querySelectorAll("[data-mode]").forEach(btn => {
+      btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+    restartGame();
+
+    messageEl.textContent =
+      mode === "hard"
+      ? "Hard Mode: Computer plays perfectly!"
+      : "Easy Mode: Enjoy a relaxed game!";
+
+  });
+});
+
+render();
+</script>
+
+</body>
+</html>
