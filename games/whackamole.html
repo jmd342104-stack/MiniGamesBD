@@ -5,7 +5,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0b1020">
-<title>Whack-a-Mole - Mini Games BD</title>
+<meta name="description" content="Play Whack-a-Mole online for free at Mini Games BD. Tap the popping moles, beat the 30-second timer and challenge your highest score in this fun reflex game.">
+<meta name="keywords" content="Whack a Mole, Whack a Mole game online, free mole game, reflex game, reaction time game, arcade game, Mini Games BD">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jmd342104-stack.github.io/MiniGamesBD/games/whackamole.html">
+<title>Whack-a-Mole Online - Play Free Reflex Game | Mini Games BD</title>
 
 <style>
 *{
@@ -21,13 +25,13 @@ body{
   min-height:100vh;
   display:flex;
   justify-content:center;
-  align-items:center;
+  align-items:flex-start;
   padding:16px;
 }
 
 .game{
   width:100%;
-  max-width:440px;
+  max-width:650px;
   background:#151e34;
   border:1px solid #293653;
   border-radius:22px;
@@ -42,6 +46,10 @@ body{
   text-decoration:none;
   margin-bottom:18px;
   font-size:14px;
+}
+
+.back:hover,.footer a:hover{
+  color:#55e6bd;
 }
 
 h1{
@@ -105,6 +113,7 @@ h1{
   user-select:none;
   -webkit-tap-highlight-color:transparent;
   touch-action:manipulation;
+  padding:0;
 }
 
 .hole.mole{
@@ -127,6 +136,7 @@ h1{
   margin:16px 0;
   color:#aab8d4;
   font-size:14px;
+  line-height:1.5;
 }
 
 .buttons{
@@ -141,6 +151,11 @@ button{
   font-size:15px;
   font-weight:bold;
   cursor:pointer;
+}
+
+button:focus-visible,a:focus-visible{
+  outline:2px solid #55e6bd;
+  outline-offset:3px;
 }
 
 .start{
@@ -161,6 +176,76 @@ button{
   margin-top:18px;
 }
 
+.content-section{
+  margin-top:25px;
+  padding-top:20px;
+  border-top:1px solid #293653;
+  text-align:left;
+}
+
+.content-section h2{
+  font-size:21px;
+  margin-bottom:12px;
+  color:#55e6bd;
+}
+
+.content-section h3{
+  font-size:16px;
+  margin:17px 0 8px;
+  color:#f4f6ff;
+}
+
+.content-section p,
+.content-section li{
+  color:#aab8d4;
+  font-size:14px;
+  line-height:1.8;
+}
+
+.content-section ul,
+.content-section ol{
+  padding-left:22px;
+}
+
+.faq-item{
+  background:#0d1528;
+  border:1px solid #293653;
+  border-radius:10px;
+  padding:13px;
+  margin-top:10px;
+}
+
+.faq-item h3{
+  margin:0 0 7px;
+}
+
+.footer{
+  border-top:1px solid #293653;
+  margin-top:25px;
+  padding-top:18px;
+  text-align:center;
+}
+
+.footer p{
+  color:#8291ad;
+  font-size:12px;
+  line-height:1.7;
+}
+
+.footer-links{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:15px;
+  margin-bottom:14px;
+}
+
+.footer a{
+  color:#aab8d4;
+  text-decoration:none;
+  font-size:13px;
+}
+
 @media(max-width:360px){
   .game{padding:14px}
   .board{gap:8px;padding:8px}
@@ -170,7 +255,7 @@ button{
 
 <body>
 
-<div class="game">
+<main class="game">
 
 <a href="../index.html" class="back">← Back to Home</a>
 
@@ -194,23 +279,23 @@ button{
   </div>
 </div>
 
-<div class="board" id="board">
-  <button class="hole" data-index="0" aria-label="Hole 1"></button>
-  <button class="hole" data-index="1" aria-label="Hole 2"></button>
-  <button class="hole" data-index="2" aria-label="Hole 3"></button>
-  <button class="hole" data-index="3" aria-label="Hole 4"></button>
-  <button class="hole" data-index="4" aria-label="Hole 5"></button>
-  <button class="hole" data-index="5" aria-label="Hole 6"></button>
-  <button class="hole" data-index="6" aria-label="Hole 7"></button>
-  <button class="hole" data-index="7" aria-label="Hole 8"></button>
-  <button class="hole" data-index="8" aria-label="Hole 9"></button>
+<div class="board" id="board" aria-label="Whack-a-Mole game board">
+  <button type="button" class="hole" data-index="0" aria-label="Hole 1"></button>
+  <button type="button" class="hole" data-index="1" aria-label="Hole 2"></button>
+  <button type="button" class="hole" data-index="2" aria-label="Hole 3"></button>
+  <button type="button" class="hole" data-index="3" aria-label="Hole 4"></button>
+  <button type="button" class="hole" data-index="4" aria-label="Hole 5"></button>
+  <button type="button" class="hole" data-index="5" aria-label="Hole 6"></button>
+  <button type="button" class="hole" data-index="6" aria-label="Hole 7"></button>
+  <button type="button" class="hole" data-index="7" aria-label="Hole 8"></button>
+  <button type="button" class="hole" data-index="8" aria-label="Hole 9"></button>
 </div>
 
-<p class="status" id="status">Press Start Game to play!</p>
+<p class="status" id="status" aria-live="polite">Press Start Game to play!</p>
 
 <div class="buttons">
-  <button class="start" id="startBtn">Start Game</button>
-  <button class="restart" id="restartBtn">↻ Restart</button>
+  <button type="button" class="start" id="startBtn">Start Game</button>
+  <button type="button" class="restart" id="restartBtn">↻ Restart</button>
 </div>
 
 <p class="help">
@@ -218,7 +303,138 @@ button{
   You have 30 seconds. How many can you catch?
 </p>
 
-</div>
+<section class="content-section">
+  <h2>About Whack-a-Mole</h2>
+  <p>
+    Whack-a-Mole is a fun and fast-paced arcade reflex game. Moles
+    appear randomly in different holes, and your job is to tap them
+    before they disappear. Every successful hit earns you one point.
+  </p>
+  <p>
+    You have only 30 seconds to catch as many moles as possible.
+    Challenge your reaction speed, improve your focus and try to
+    beat your personal best score. Play for free on Mini Games BD!
+  </p>
+</section>
+
+<section class="content-section">
+  <h2>How to Play Whack-a-Mole</h2>
+  <ol>
+    <li>Press the Start Game button to begin.</li>
+    <li>Watch the nine holes on the game board.</li>
+    <li>Tap or click the hole where the mole appears.</li>
+    <li>Each successful hit gives you one point.</li>
+    <li>Keep catching moles before the 30-second timer ends.</li>
+    <li>Press Restart whenever you want to start over.</li>
+  </ol>
+</section>
+
+<section class="content-section">
+  <h2>Game Rules</h2>
+  <ul>
+    <li>Each round lasts 30 seconds.</li>
+    <li>There are nine holes where the mole can appear.</li>
+    <li>Only tapping the hole with the active mole earns a point.</li>
+    <li>Each mole can be hit only once.</li>
+    <li>Moles appear at random positions.</li>
+    <li>Your best score is saved in your browser.</li>
+    <li>The game ends automatically when the timer reaches zero.</li>
+  </ul>
+</section>
+
+<section class="content-section">
+  <h2>Tips to Get a Higher Score</h2>
+
+  <h3>1. Stay Focused</h3>
+  <p>
+    Keep your eyes on the entire board instead of watching only one hole.
+    The mole can appear in any of the nine positions.
+  </p>
+
+  <h3>2. React Quickly</h3>
+  <p>
+    Tap the mole as soon as you see it. Quick reactions help you collect
+    more points before the timer runs out.
+  </p>
+
+  <h3>3. Use Your Fingers on Mobile</h3>
+  <p>
+    On a touchscreen device, use your thumb or index finger to tap the
+    mole directly. Keep your hand comfortable.
+  </p>
+
+  <h3>4. Avoid Random Tapping</h3>
+  <p>
+    Only tap when you can see the mole. Random tapping will not increase
+    your score.
+  </p>
+
+  <h3>5. Practice Regularly</h3>
+  <p>
+    Play multiple rounds to improve your reaction time and try to beat
+    your previous best score.
+  </p>
+</section>
+
+<section class="content-section">
+  <h2>Frequently Asked Questions</h2>
+
+  <div class="faq-item">
+    <h3>Is Whack-a-Mole free to play?</h3>
+    <p>Yes. You can play this game online for free on Mini Games BD.</p>
+  </div>
+
+  <div class="faq-item">
+    <h3>How long is each game?</h3>
+    <p>Each round lasts 30 seconds.</p>
+  </div>
+
+  <div class="faq-item">
+    <h3>How do I earn points?</h3>
+    <p>
+      Tap or click the hole containing the mole. Every successful hit
+      gives you one point.
+    </p>
+  </div>
+
+  <div class="faq-item">
+    <h3>Can I play on my mobile phone?</h3>
+    <p>
+      Yes. The game supports touchscreen devices. Simply tap the mole
+      when it appears.
+    </p>
+  </div>
+
+  <div class="faq-item">
+    <h3>Is my best score saved?</h3>
+    <p>
+      Yes. Your best score is stored locally in your browser using
+      local storage.
+    </p>
+  </div>
+
+  <div class="faq-item">
+    <h3>How can I play another round?</h3>
+    <p>
+      When the timer ends, press Play Again. You can also press Restart
+      to reset the current round at any time.
+    </p>
+  </div>
+</section>
+
+<footer class="footer">
+  <nav class="footer-links">
+    <a href="../index.html">Home</a>
+    <a href="../about.html">About</a>
+    <a href="../contact.html">Contact</a>
+    <a href="../privacy.html">Privacy Policy</a>
+    <a href="../terms.html">Terms</a>
+  </nav>
+  <p>© <span id="year"></span> Mini Games BD. All rights reserved.</p>
+  <p>Play free online games and have fun!</p>
+</footer>
+
+</main>
 
 <script>
 const holes = document.querySelectorAll(".hole");
@@ -237,18 +453,23 @@ let activeHole = -1;
 let gameRunning = false;
 let timerInterval = null;
 let moleInterval = null;
+let hitTimeout = null;
 
 bestText.textContent = best;
+document.getElementById("year").textContent = new Date().getFullYear();
 
 function clearHoles(){
   holes.forEach(hole=>{
     hole.textContent = "";
     hole.classList.remove("mole","bonk");
   });
+
   activeHole = -1;
 }
 
 function showMole(){
+  if(!gameRunning) return;
+
   clearHoles();
 
   let next = Math.floor(Math.random()*holes.length);
@@ -256,6 +477,7 @@ function showMole(){
   activeHole = next;
   holes[next].textContent = "🐹";
   holes[next].classList.add("mole");
+  holes[next].setAttribute("aria-label","Mole! Tap to score");
 }
 
 function updateScore(){
@@ -273,6 +495,7 @@ function startGame(){
 
   clearInterval(timerInterval);
   clearInterval(moleInterval);
+  clearTimeout(hitTimeout);
 
   score = 0;
   timeLeft = 30;
@@ -303,6 +526,7 @@ function endGame(){
 
   clearInterval(timerInterval);
   clearInterval(moleInterval);
+  clearTimeout(hitTimeout);
 
   clearHoles();
 
@@ -313,6 +537,7 @@ function endGame(){
 function restartGame(){
   clearInterval(timerInterval);
   clearInterval(moleInterval);
+  clearTimeout(hitTimeout);
 
   gameRunning = false;
   score = 0;
@@ -340,12 +565,15 @@ holes.forEach(hole=>{
       hole.classList.remove("mole");
       hole.classList.add("bonk");
       hole.textContent = "💥";
+      hole.setAttribute("aria-label","Hit!");
 
       activeHole = -1;
 
       statusText.textContent = "Great hit! Keep going!";
 
-      setTimeout(()=>{
+      clearTimeout(hitTimeout);
+
+      hitTimeout = setTimeout(()=>{
         if(gameRunning && activeHole===-1){
           showMole();
         }
