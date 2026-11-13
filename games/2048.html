@@ -5,7 +5,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0b1020">
-<title>2048 Game - Mini Games BD</title>
+<meta name="description" content="Play 2048 Game online for free at Mini Games BD. Combine matching number tiles, beat your high score and reach the 2048 tile.">
+<meta name="keywords" content="2048 game, play 2048 online, free 2048 puzzle, number puzzle game, brain game, Mini Games BD">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://jmd342104-stack.github.io/MiniGamesBD/games/2048.html">
+<title>2048 Game Online - Play Free Number Puzzle | Mini Games BD</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -17,13 +21,13 @@ body{
   min-height:100vh;
   display:flex;
   justify-content:center;
-  align-items:center;
+  align-items:flex-start;
   padding:16px;
 }
 
 .game{
   width:100%;
-  max-width:440px;
+  max-width:650px;
   background:#151e34;
   border:1px solid #293653;
   border-radius:22px;
@@ -37,6 +41,8 @@ body{
   margin-bottom:18px;
   font-size:14px;
 }
+
+.back:hover,.footer a:hover{color:#55e6bd}
 
 h1{
   font-size:34px;
@@ -97,6 +103,11 @@ button{
   cursor:pointer;
 }
 
+button:focus-visible,a:focus-visible{
+  outline:2px solid #55e6bd;
+  outline-offset:3px;
+}
+
 .new{
   background:#55e6bd;
   color:#081322;
@@ -107,6 +118,10 @@ button{
   background:#293753;
   color:#fff;
   flex:1;
+}
+
+.undo:disabled{
+  cursor:not-allowed;
 }
 
 .board{
@@ -133,6 +148,7 @@ button{
   font-size:clamp(19px,6vw,29px);
   font-weight:bold;
   color:#172033;
+  overflow:hidden;
 }
 
 .v2{background:#e9e3d6}
@@ -156,9 +172,7 @@ button{
   padding:13px 0 5px;
 }
 
-.message strong{
-  color:#55e6bd;
-}
+.message strong{color:#55e6bd}
 
 .help{
   color:#8e9db8;
@@ -168,17 +182,92 @@ button{
   margin-top:12px;
 }
 
-@media(max-width:360px){
+.content-section{
+  margin-top:25px;
+  padding-top:20px;
+  border-top:1px solid #293653;
+}
+
+.content-section h2{
+  font-size:21px;
+  margin-bottom:12px;
+  color:#55e6bd;
+}
+
+.content-section h3{
+  font-size:16px;
+  margin:17px 0 8px;
+  color:#f4f6ff;
+}
+
+.content-section p,
+.content-section li{
+  color:#aab8d4;
+  font-size:14px;
+  line-height:1.8;
+}
+
+.content-section ul,
+.content-section ol{
+  padding-left:22px;
+}
+
+.faq-item{
+  background:#0d1528;
+  border:1px solid #293653;
+  border-radius:10px;
+  padding:13px;
+  margin-top:10px;
+}
+
+.faq-item h3{
+  margin:0 0 7px;
+}
+
+.footer{
+  border-top:1px solid #293653;
+  margin-top:25px;
+  padding-top:18px;
+  text-align:center;
+}
+
+.footer p{
+  color:#8291ad;
+  font-size:12px;
+  line-height:1.7;
+}
+
+.footer-links{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:15px;
+  margin-bottom:14px;
+}
+
+.footer a{
+  color:#aab8d4;
+  text-decoration:none;
+  font-size:13px;
+}
+
+@media(max-width:420px){
   .game{padding:14px}
   .board{gap:5px;padding:6px}
-  .score-box{padding:8px}
+  .score-box{padding:8px;min-width:65px}
+  .top{gap:5px}
+  h1{font-size:29px}
+}
+
+@media(max-width:340px){
+  .top{flex-direction:column;align-items:flex-start}
 }
 </style>
 </head>
 
 <body>
 
-<div class="game">
+<main class="game">
 
 <a href="../index.html" class="back">← Back to Home</a>
 
@@ -202,12 +291,12 @@ button{
 
 <div class="actions">
   <button class="new" id="newGame">New Game</button>
-  <button class="undo" id="undo">↶ Undo</button>
+  <button class="undo" id="undo" disabled>↶ Undo</button>
 </div>
 
-<div class="board" id="board"></div>
+<div class="board" id="board" aria-label="2048 game board"></div>
 
-<div class="message" id="message">
+<div class="message" id="message" aria-live="polite">
   Use arrow keys or swipe to play!
 </div>
 
@@ -216,7 +305,142 @@ button{
   Reach 2048 to win!
 </p>
 
-</div>
+<section class="content-section">
+  <h2>About 2048 Game</h2>
+  <p>
+    2048 is a fun and addictive number puzzle game that challenges your
+    logical thinking and planning skills. The goal is to slide numbered
+    tiles around a 4×4 board and combine matching numbers until you create
+    the 2048 tile.
+  </p>
+  <p>
+    Every move adds a new tile to the board, so you need to plan carefully.
+    Play for free on Mini Games BD, challenge yourself and try to beat
+    your highest score!
+  </p>
+</section>
+
+<section class="content-section">
+  <h2>How to Play 2048</h2>
+  <ol>
+    <li>Use the arrow keys on your keyboard to move the tiles.</li>
+    <li>On mobile, swipe up, down, left or right on the game board.</li>
+    <li>Tiles with the same number combine when they touch.</li>
+    <li>Each successful combination creates a tile with double the value.</li>
+    <li>Keep combining tiles until you reach 2048.</li>
+    <li>Use the Undo button to reverse your previous move.</li>
+  </ol>
+</section>
+
+<section class="content-section">
+  <h2>Game Rules</h2>
+  <ul>
+    <li>The game board contains 16 spaces arranged in a 4×4 grid.</li>
+    <li>New tiles appear with a value of 2 or 4 after a valid move.</li>
+    <li>Only tiles with the same number can merge.</li>
+    <li>Two matching tiles merge into one tile with their combined value.</li>
+    <li>Each tile can merge only once during a single move.</li>
+    <li>The game ends when no empty spaces or possible merges remain.</li>
+    <li>Reach the 2048 tile to achieve the main winning goal.</li>
+  </ul>
+</section>
+
+<section class="content-section">
+  <h2>Tips and Tricks to Win</h2>
+
+  <h3>1. Keep Your Biggest Tile in One Corner</h3>
+  <p>
+    Try to keep your highest-value tile in a single corner. This makes
+    organizing the other numbers easier.
+  </p>
+
+  <h3>2. Avoid Random Moves</h3>
+  <p>
+    Think before moving. Random swipes can scatter your tiles and make
+    it difficult to combine larger numbers.
+  </p>
+
+  <h3>3. Build Numbers Gradually</h3>
+  <p>
+    Combine smaller tiles step by step. Focus on creating a clear path
+    toward larger numbers.
+  </p>
+
+  <h3>4. Keep Empty Spaces Available</h3>
+  <p>
+    Empty spaces give you more options. Try not to fill the entire board
+    too quickly.
+  </p>
+
+  <h3>5. Use Undo Carefully</h3>
+  <p>
+    If your last move creates a difficult situation, use Undo to return
+    to the previous board and try another direction.
+  </p>
+</section>
+
+<section class="content-section">
+  <h2>Frequently Asked Questions</h2>
+
+  <div class="faq-item">
+    <h3>Is 2048 free to play?</h3>
+    <p>Yes. You can play 2048 online for free on Mini Games BD.</p>
+  </div>
+
+  <div class="faq-item">
+    <h3>How do I move the tiles?</h3>
+    <p>
+      Use the arrow keys on a computer or swipe in any direction on
+      your mobile device.
+    </p>
+  </div>
+
+  <div class="faq-item">
+    <h3>What happens when two matching tiles meet?</h3>
+    <p>
+      They merge into one tile with double their original value.
+      For example, two 8 tiles create a 16 tile.
+    </p>
+  </div>
+
+  <div class="faq-item">
+    <h3>Can I undo a move?</h3>
+    <p>
+      Yes. The Undo button lets you reverse your most recent valid move.
+      You can undo one move at a time.
+    </p>
+  </div>
+
+  <div class="faq-item">
+    <h3>Does the game save my best score?</h3>
+    <p>
+      Yes. Your best score is saved locally in your browser using
+      local storage.
+    </p>
+  </div>
+
+  <div class="faq-item">
+    <h3>When does the game end?</h3>
+    <p>
+      The game ends when the board is full and there are no adjacent
+      matching tiles that can merge.
+    </p>
+  </div>
+</section>
+
+<footer class="footer">
+  <nav class="footer-links">
+    <a href="../index.html">Home</a>
+    <a href="../about.html">About</a>
+    <a href="../contact.html">Contact</a>
+    <a href="../privacy.html">Privacy Policy</a>
+    <a href="../terms.html">Terms</a>
+  </nav>
+  <p>© <span id="year"></span> Mini Games BD. All rights reserved.</p>
+  <p>Play free online games and have fun!</p>
+</footer>
+
+</main>
 
 <script>
 const boardElement = document.getElementById("board");
@@ -233,6 +457,7 @@ let won = false;
 let gameOver = false;
 
 bestElement.textContent = best;
+document.getElementById("year").textContent = new Date().getFullYear();
 
 function emptyGrid(){
   return Array.from({length:4},()=>[0,0,0,0]);
@@ -245,6 +470,7 @@ function savePrevious(){
     won:won,
     gameOver:gameOver
   };
+
   undoButton.disabled = false;
   undoButton.style.opacity = "1";
 }
@@ -275,6 +501,7 @@ function render(){
       const cell = document.createElement("div");
 
       cell.className = "cell";
+      cell.setAttribute("aria-label",value ? value.toString() : "Empty");
 
       if(value){
         cell.textContent = value;
@@ -391,6 +618,7 @@ function canMove(){
       if(r<3 && grid[r][c]===grid[r+1][c]) return true;
     }
   }
+
   return false;
 }
 
